@@ -4,9 +4,14 @@ const morgan = require('morgan');
 
 const app = express()
 
-app.get('/', (req,res) => {
+app.get('/', (req,res,next) => {
     res.send('Hello, Express!');
 })
 
-const PORT = process.env.PORT || 443;
+app.post('/list-question', (req,res,next) => {
+    console.log(req)
+    res.send('Hello, Express!');
+})
+
+const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
