@@ -1,0 +1,19 @@
+version : '3'
+services:
+    ibearyoudb :
+      image: postgres:14.0-alpine
+      environment :
+        - POSTGRES_DB=ibearyou_db
+        - POSTGRES_USER=ibearyou
+        - POSTGRES_PASSWORD=ibearyou
+      restart: always
+      ports:
+        - "5999:5432"
+      volumes:
+        - ./postgres_data:/var/lib/postgresql/data
+ 
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
