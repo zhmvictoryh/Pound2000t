@@ -7,7 +7,6 @@ const app = express()
 app.get('/', (req,res,next) => {
     res.send('Hello, Express!');
 })
-
 app.post('/list-question', (req,res,next) => {
     console.log(req)
     res.send('Hello, Express!');

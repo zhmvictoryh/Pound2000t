@@ -1,5 +1,5 @@
 const {Pool,Client} = require('pg')
-const connectionString = 'postgressql://postgres:1807@localhost:5433/IBearYou'
+const connectionString = 'postgresql://ibearyou:ibearyou@localhost:5999/ibearyou_db'
 
 const client = new Client({
    connectionString:connectionString
@@ -7,7 +7,7 @@ const client = new Client({
 
 client.connect();
 
-client.query('Select * from ' , (err,res)=>{
+client.query('Select * from "Card"' , (err,res)=>{
     
  console.log(err,res)
     client.end() ;
