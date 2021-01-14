@@ -9,7 +9,7 @@ app.get('/', (req,res,next) => {
 })
 app.post('/list-question', (req,res,next) => {
     console.log(req)
-    res.send('Hello, Express!');
+    res.send('Hi, Express!');
 })
 
 const PORT = process.env.PORT || 2000;
