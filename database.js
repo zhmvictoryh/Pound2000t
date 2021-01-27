@@ -12,3 +12,4 @@ client.query('Select * from "Card"' , (err,res)=>{
  console.log(err,res)
     client.end() ;
 })
+
