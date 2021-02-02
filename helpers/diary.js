@@ -25,4 +25,4 @@ await psql.manyOrNone(sql)
 
 }
 
-export const diary
+export default diary

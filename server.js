@@ -1,4 +1,4 @@
-const diary = require('./diary')
+import diary  from './helpers/diary'
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -28,9 +28,10 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.get('/', (req,res,next) => {
     res.send('Hello, Express!');
 })
-app.get('/api/list-diary',(req,res,next)=>{
+app.get('/api/list-diary',async (req,res,next)=>{
    const json = req.body
-   const ret = diary.list_all(json)
+   const ret = await diary.list_all(json)
+   console.log(ret)
    res.send(ret)
 })
 app.post('/list-question', (req,res,next) => {
