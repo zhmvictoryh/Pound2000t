@@ -28,19 +28,18 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.get('/', (req,res,next) => {
     res.send('Hello, Express!');
 })
+
+// diary 
 app.get('/api/list-diary',async (req,res,next)=>{
    const json = req.body
    const ret = await diary.list_all(json)
    console.log(ret)
    res.send(ret)
 })
-app.post('/list-question', (req,res,next) => {
-    console.log(req)
-    res.send('Hello, Express!');
-})
+
+// check-up
 
 
 const PORT = process.env.PORT || 2000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
-//test 
