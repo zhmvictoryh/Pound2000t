@@ -1,19 +1,17 @@
 const psql = require('../psqlAdapter').psql;  
 
-const diary ={}
+const choices ={}
 
-diary.list_all = async(json)=>{
+choices.list_all = async(json)=>{
 let ret =[]
 /*
-SELECT diary_id, diary_date, title, good, bad, wish, create_date, update_date, 
-diary_pic, user_id, feel_id FROM  diary
+SELECT choices_id, choices_date, title, good, bad, wish, create_date, update_date, 
+choices_pic, user_id, feel_id FROM  choices
 */
 
-let sql  =  "SELECT D.diary_id, D.diary_date, D.title, D.good, D.bad, D.wish, D.create_date, D.update_date, D.diary_pic" 
-sql += ", D.user_id, F.feel_name "
-sql += " FROM  diary D LEFT JOIN Feel F ON D.feel_id = F.feel_id" 
-sql += " LEFT JOIN users U ON D.user_id = U.user_id" 
-    
+let sql  =  "SELECT C.choice_id, C.next_question_id, C.seq, C.des, C.choice_score, Q.question_id"
+	sql += " FROM choices C,question Q WHERE C.question_id = Q.question_id"
+
 await psql.manyOrNone(sql)
                 .then((data) => {
                  
@@ -85,4 +83,4 @@ const insert_mt4_order = async(json)=>{
 
    } */
 
-export default diary
+export default choices
