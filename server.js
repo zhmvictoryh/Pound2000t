@@ -12,15 +12,37 @@ import result  from './helpers/result';
 import questionnaires  from './helpers/questionnaires';
 import questionnaire_question  from './helpers/questionnaire_question';
 import heal_sentence  from './helpers/heal_sentence';
+import users  from './helpers/users';
+
+const login = require('./routes/login')
+const register = require('./routes/register')
+const profile = require('./routes/profile')
 
 const app = express();
+const router = express.Router()
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(express.json())
+app.use('/api/v1',router)
+
 
 // homepage route
 app.get('/', (req,res,next) => {
     res.send('Hello, Express!');
+})
+
+// login
+router.use('/profile',profile)
+router.use('/login',login)
+router.use('/register',register)
+
+// test get api users table
+app.get('/api/list-users',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.list_all(json)
+   console.log(ret)
+   res.send(ret)
 })
 
 // diary 
