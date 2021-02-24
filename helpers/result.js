@@ -3,7 +3,7 @@ const psql = require('../psqlAdapter').psql;
 const result ={}
 
 result.list_all = async(json)=>{
-let ret =[]
+const ret ={}
 
 let sql = "SELECT r.result_id, r.user_prompt, r.create_date, qn.questionnaire_id, u.user_id, c.card_id"
 	sql += " FROM result r LEFT JOIN questionnaires qn ON r.questionnaire_id = qn.questionnaire_id"
@@ -16,7 +16,9 @@ await psql.manyOrNone(sql)
 
                 console.log(data.length)
                 if(data.length >0){ 
-                ret = data
+                ret.status=200
+                ret.message="Success"
+                ret.data = data
 
 
                 }
@@ -24,6 +26,8 @@ await psql.manyOrNone(sql)
                 })
                 .catch(error => {
                 // error;
+                ret.status =400
+                ret.message="Error"
                 throw error  
                 });
                 return ret

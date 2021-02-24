@@ -45,6 +45,13 @@ app.get('/api/list-users',async (req,res,next)=>{
    res.send(ret)
 })
 
+app.post('/api/register',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.register(json)
+   console.log(ret)
+   res.send(ret)
+})
+
 // diary 
 app.get('/api/list-diary',async (req,res,next)=>{
    const json = req.body

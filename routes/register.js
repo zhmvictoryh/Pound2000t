@@ -6,17 +6,17 @@ router.post('/', async (req, res) => {
   var user = req.body.user
   console.log(user)
   
-    if(user.name === null || user.name === undefined || user.name === '' || user.name <= 0){
+    if(user.first_name === null || user.first_name === undefined || user.first_name === '' || user.first_name <= 0){
       var response = {
         status: "error",
-        message: "name is invalid"
+        message: "first_name is invalid"
       }
       return res.json(response)
     }
-    if(user.surename === null || user.surename === undefined || user.surename === '' || user.surename <= 0){
+    if(user.last_name === null || user.last_name === undefined || user.last_name === '' || user.last_name <= 0){
       var response = {
         status: "error",
-        message: "surename is invalid"
+        message: "last_name is invalid"
       }
       return res.json(response)
     }

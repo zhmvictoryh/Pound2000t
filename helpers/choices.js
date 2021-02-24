@@ -3,7 +3,7 @@ const psql = require('../psqlAdapter').psql;
 const choices ={}
 
 choices.list_all = async(json)=>{
-let ret =[]
+const ret ={}
 /*
 SELECT choices_id, choices_date, title, good, bad, wish, create_date, update_date, 
 choices_pic, user_id, feel_id FROM  choices
@@ -18,7 +18,9 @@ await psql.manyOrNone(sql)
 
                 console.log(data.length)
                 if(data.length >0){ 
-                ret = data
+                ret.status=200
+                ret.message="Success"
+                ret.data = data
 
 
                 }
@@ -26,6 +28,8 @@ await psql.manyOrNone(sql)
                 })
                 .catch(error => {
                 // error;
+                ret.status =400
+                ret.message="Error"
                 throw error  
                 });
                 return ret

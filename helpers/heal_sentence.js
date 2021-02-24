@@ -3,7 +3,7 @@ const psql = require('../psqlAdapter').psql;
 const heal_sentence ={}
 
 heal_sentence.list_all = async(json)=>{
-let ret =[]
+const ret ={}
 /*
 SELECT * FROM  heal_sentence
 */
@@ -16,7 +16,9 @@ await psql.manyOrNone(sql)
 
                 console.log(data)
                 if(data.length >0){ 
-                ret = data
+                ret.status=200
+                ret.message="Success"
+                ret.data = data
 
 
                 }
@@ -24,6 +26,8 @@ await psql.manyOrNone(sql)
                 })
                 .catch(error => {
                 // error;
+                ret.status =400
+                ret.message="Error"
                 throw error  
                 });
                 return ret
