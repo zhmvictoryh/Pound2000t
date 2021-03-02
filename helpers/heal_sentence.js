@@ -8,7 +8,8 @@ const ret ={}
 SELECT * FROM  heal_sentence
 */
 
-let sql  =  "SELECT hs.heal_sentence from heal_sentence hs order by random() limit 1;"
+
+let sql  =  "SELECT hs.heal_sentence from heal_sentence hs order by random() limit 1"
 
 await psql.manyOrNone(sql)
                 .then((data) => {
@@ -16,9 +17,9 @@ await psql.manyOrNone(sql)
 
                 console.log(data.length)
                 if(data.length >0){ 
-                ret.status = 200
-                ret.message = "Success"
-                ret = data
+                ret.status=200
+                ret.message="Success"
+                ret.data = data
 
 
                 }
@@ -26,8 +27,8 @@ await psql.manyOrNone(sql)
                 })
                 .catch(error => {
                 // error;
-                ret.status = 400
-                ret.message = "Error"
+                ret.status =400
+                ret.message="Error"
                 throw error  
                 });
                 return ret
@@ -35,6 +36,7 @@ await psql.manyOrNone(sql)
 }
 
 export default heal_sentence
+
 
 /*await psql.manyOrNone(sql)
                 .then((data) => {
@@ -57,8 +59,8 @@ export default heal_sentence
 }
 */
 
-/* 
-
+ 
+/*
 const items = ["a", "b", "c"];
 
 function getRandom3 (list) {
@@ -68,11 +70,11 @@ function getRandom3 (list) {
         res.push(list[random]);
     }
     return res;
+   
 }
 
 function getRandomElements(list {
     return [...list].sort(() => Math.random() > 0.5 ? 1 : -1).slice(0, 3)
 })
+*/
 
-
-*/ 
