@@ -78,3 +78,24 @@ function getRandomElements(list {
 })
 */
 
+/*
+const items = "SELECT hs.heal_sentence from heal_sentence hs order by random() limit 1;"
+
+function getRandom3(list) {
+    const res = [];
+    for (let x = 1; x <= 20; x++) {
+        const items = "SELECT hs.heal_sentence from heal_sentence hs order by random() limit 1;"
+        res.push(list[random]);
+    }
+    return res;
+}
+
+function getRandomElements(list) {
+    return [...list].sort(() => Math.random() > 0.5 ? 1 : -1).slice(0, 3)
+}
+
+console.log(getRandomElements(items));
+console.log(getRandomElements(items));
+console.log(getRandomElements(items));
+console.log(getRandomElements(items));
+*/
