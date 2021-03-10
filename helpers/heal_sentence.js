@@ -1,13 +1,14 @@
-const psql = require('../psqlAdapter').psql;  
+/*const psql = require('../psqlAdapter').psql;  
 
 const heal_sentence ={}
 
 heal_sentence.list_all = async(json)=>{
-const ret ={}
+const ret ={} */
 /*
 SELECT hs.hs_id, hs.heal_sentence FROM heal_sentence hs;
 */
 
+<<<<<<< Updated upstream
 //get
 let sql  =  "SELECT hs.heal_sentence FROM heal_sentence hs WHERE hs_id = 1;" 
 sql += "SELECT hs.heal_sentence FROM heal_sentence hs WHERE hs_id = 2;"
@@ -41,6 +42,10 @@ sql += "SELECT hs.heal_sentence FROM heal_sentence hs WHERE hs_id = 29;"
 sql += "SELECT hs.heal_sentence FROM heal_sentence hs WHERE hs_id = 30;"
 sql += "SELECT hs.heal_sentence FROM heal_sentence hs WHERE hs_id = 31;"
 
+=======
+/*
+let sql  =  "SELECT hs.heal_sentence from heal_sentence hs order by random() limit 1"
+>>>>>>> Stashed changes
 
 await psql.manyOrNone(sql)
                 .then((data) => {
@@ -68,6 +73,7 @@ await psql.manyOrNone(sql)
 
 export default heal_sentence
 
+*/
 
 /*await psql.manyOrNone(sql)
                 .then((data) => {
@@ -90,8 +96,7 @@ export default heal_sentence
 }
 */
 
- 
-/*
+/* 
 const items = ["a", "b", "c"];
 
 function getRandom3 (list) {
@@ -104,6 +109,11 @@ function getRandom3 (list) {
    
 }
 
+console.log(getRandom3(item));
+*/
+
+
+/*
 function getRandomElements(list {
     return [...list].sort(() => Math.random() > 0.5 ? 1 : -1).slice(0, 3)
 })
