@@ -1,15 +1,15 @@
-const psql = require('../psqlAdapter').psql;  
+/*const psql = require('../psqlAdapter').psql;  
 
 const heal_sentence ={}
 
 heal_sentence.list_all = async(json)=>{
 const ret ={} 
 
-/*
-SELECT hs.hs_id, hs.heal_sentence FROM heal_sentence hs;
-*/
 
-//get
+SELECT hs.hs_id, hs.heal_sentence FROM heal_sentence hs;
+
+
+/*
 let sql  =  "SELECT hs.heal_sentence FROM heal_sentence hs WHERE hs_id = 1;" 
 sql += "SELECT hs.heal_sentence FROM heal_sentence hs WHERE hs_id = 2;"
 sql += "SELECT hs.heal_sentence FROM heal_sentence hs WHERE hs_id = 3;"

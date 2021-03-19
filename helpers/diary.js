@@ -37,6 +37,45 @@ await psql.manyOrNone(sql)
                 return ret
 
 }
+
+//post
+diary.create_diary= async(json)=>{
+    console.log(json)
+const ret ={}
+
+let sql = "INSERT INTO diary(diary_date, title, good, bad, wish, create_date, update_date, diary_pic, user_id, feel_id)"
+	sql += " VALUES( '" +json.diary_date;
+    sql += "','"+json.title;
+    sql += "','"+json.good;
+    sql += "','"+json.bad;
+    sql += "','"+json.wish;
+    sql += "', current_timestamp";
+    sql += ",  current_timestamp ";
+    sql += " ,'"+json.pic;
+    sql += "','"+json.user_id;
+    sql += "','"+json.feel_id+")";
+    console.log(" sql : ",sql)
+        const insert = await psql.none(sql)
+                .then(() => { 
+                    ret.status="Success" 
+                })
+                .catch(error => {
+                    // error;
+                    throw error
+                    ret.status="Error"
+                });
+
+        
+        return ret;
+}
+
+
+// picture --> url?
+// type date?
+// กรณีดึงจากตารางอื่น เขียนงายยยย
+
+export default diary
+
 /*
 const insert_mt4_order = async(json)=>{
         let ret = {}
@@ -89,4 +128,3 @@ const insert_mt4_order = async(json)=>{
 
    } */
 
-export default diary

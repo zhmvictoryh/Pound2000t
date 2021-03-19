@@ -13,10 +13,10 @@ import questionnaires  from './helpers/questionnaires';
 import questionnaire_question  from './helpers/questionnaire_question';
 import heal_sentence  from './helpers/heal_sentence';
 import users  from './helpers/users';
+import alarm  from './helpers/alarm';
 
 const login = require('./routes/login')
 const register = require('./routes/register')
-const profile = require('./routes/profile')
 
 const app = express();
 const router = express.Router()
@@ -33,11 +33,10 @@ app.get('/', (req,res,next) => {
 })
 
 // login
-router.use('/profile',profile)
 router.use('/login',login)
 router.use('/register',register)
 
-// test get api users table
+// get users
 app.get('/api/list-users',async (req,res,next)=>{
    const json = req.body
    const ret = await users.list_all(json)
@@ -45,6 +44,7 @@ app.get('/api/list-users',async (req,res,next)=>{
    res.send(ret)
 })
 
+// register
 app.post('/api/register',async (req,res,next)=>{
    const json = req.body
    const ret = await users.register(json)
@@ -59,6 +59,14 @@ app.get('/api/list-diary',async (req,res,next)=>{
    console.log(ret)
    res.send(ret)
 })
+
+app.post('/api/create_diary',async (req,res,next)=>{
+   const json = req.body
+   const ret = await diary.create_diary(json)
+   console.log(ret)
+   res.send(ret)
+})
+
 app.get('/api/list-feel',async (req,res,next)=>{
    const json = req.body
    const ret = await feel.list_all(json)
@@ -121,6 +129,16 @@ app.get('/api/list-heal_sentence',async (req,res,next)=>{
    console.log(ret)
    res.send(ret)
 })
+
+// alarm
+/*
+app.get('/api/list-alarm',async (req,res,next)=>{
+   const json = req.body
+   const ret = await alarm.list_all(json)
+   console.log(ret)
+   res.send(ret)
+})
+*/
 
 
 const PORT = process.env.PORT || 2000;

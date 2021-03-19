@@ -94,4 +94,4 @@ let sql = "INSERT INTO alarm(  alarm_name, alarm_time, sound_id, user_id)"
         
         return ret;
 }
-export default diary
+export default alarm
