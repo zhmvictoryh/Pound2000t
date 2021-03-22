@@ -67,6 +67,13 @@ app.post('/api/create_diary',async (req,res,next)=>{
    res.send(ret)
 })
 
+app.post('/api/edit_diary',async (req,res,next)=>{
+   const json = req.body
+   const ret = await diary.edit_diary(json)
+   console.log(ret)
+   res.send(ret)
+})
+
 app.get('/api/list-feel',async (req,res,next)=>{
    const json = req.body
    const ret = await feel.list_all(json)
