@@ -47,6 +47,9 @@ const ret ={}
 	VALUES ('กินยาแก้ปวด', '2021-11-02 03:25:01', '1', '1');
  */
 
+
+// put = update 
+// update ใน sql ไม่ได้ใช้ insert
 let sql = "INSERT INTO alarm(  alarm_name, alarm_time, sound_id, user_id)"
     sql += " VALUES( '" +json.alarm_name;
     sql  +=  "','"+json.alarm_time;

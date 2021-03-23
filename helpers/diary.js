@@ -74,7 +74,7 @@ let sql = "INSERT INTO diary(diary_date, title, good, bad, wish, create_date, up
 // type date?
 // กรณีดึงจากตารางอื่น เขียนงายยยย
 
-//put
+// แก้ put
 diary.edit_diary= async(json)=>{
     console.log(json)
 const ret ={}

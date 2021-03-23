@@ -34,4 +34,31 @@ await psql.manyOrNone(sql)
 
 }
 
+//post
+diary.result= async(json)=>{
+    console.log(json)
+const ret ={}
+
+let sql = "INSERT INTO result(user_prompt, create_date, questionnaire_id, user_id, card_id)"
+	sql += " VALUES( '" +user_prompt;
+    sql += "', current_timestamp";
+    sql += " ,'"+json.questionnaire_id
+    sql += "','"+json.user_id;
+    sql += "','"+json.card_id +")";
+    console.log(" sql : ",sql)
+        const insert = await psql.none(sql)
+                .then(() => { 
+                    ret.status="Success" 
+                })
+                .catch(error => {
+                    // error;
+                    throw error
+                    ret.status="Error"
+                });
+
+        
+        return ret;
+}
+
+
 export default result
