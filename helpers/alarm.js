@@ -74,15 +74,15 @@ let sql = "INSERT INTO alarm(  alarm_name, alarm_time, sound_id, user_id)"
 alarm.edit = async(json)=>{
     console.log(json)
 const ret ={}
-/*INSERT INTO alarm(  alarm_name, alarm_time, sound_id, user_id)
-	VALUES ('กินยาแก้ปวด', '2021-11-02 04:25:01', '1', '1');
+/*UPDATE alarm
+	SET alarm_id='2', alarm_name='lyla', alarm_time='05:06:07', sound_id='1', user_id='1';
  */
 
-let sql = "INSERT INTO alarm(  alarm_name, alarm_time, sound_id, user_id)"
-    sql += " VALUES( '" +json.alarm_name;
-    sql  +=  "','"+json.alarm_time;
-    sql  +=  "','"+json.sound_id;
-    sql  +=  "','"+json.user_id +")";
+//แก้เป็น query edit แน้วว
+let sql =  "UPDATE alarm SET(  alarm_name = ''" +json.alarm_name; 
+    sql += ", alarm_time = ''" + json.alarm_time; 
+    sql += ", sound_id = ''" + json.sound_id; 
+    sql += ", user_id = ''" + json.user_id + ")";
     console.log(" sql : ",sql)
         const insert = await psql.none(sql)
                 .then(() => { 
