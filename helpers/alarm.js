@@ -84,7 +84,31 @@ let sql =  "UPDATE alarm SET(  alarm_name = ''" +json.alarm_name;
     sql += ", sound_id = ''" + json.sound_id; 
     sql += ", user_id = ''" + json.user_id + ")";
     console.log(" sql : ",sql)
-        const insert = await psql.none(sql)
+        const update = await psql.none(sql)
+                .then(() => { 
+                    ret.status="Success" 
+                })
+                .catch(error => {
+                    // error;
+                    throw error
+                    ret.status="Error"
+                });
+
+        
+        return ret;
+}
+
+//delete
+alarm.delete = async(json)=>{
+    console.log(json)
+const ret ={}
+/*
+    DELETE FROM "alarm" WHERE alarm_id = '1';
+*/
+
+let sql =  "DELETE FROM alarm where alarm_id = " + json.alarm_id;
+    console.log(" sql : ",sql)
+        const remove = await psql.none(sql)
                 .then(() => { 
                     ret.status="Success" 
                 })

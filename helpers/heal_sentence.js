@@ -20,7 +20,6 @@ const ret ={}
     console.log(getMod);
     
     let sql = "SELECT heal_sentence FROM heal_sentence where hs_id = " + (getMod+1); 
-    //console.log(sql);
 
     console.log(" sql : ",sql)
         const get_sentence = await psql.none(sql)
