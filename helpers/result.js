@@ -12,7 +12,7 @@ let sql = "SELECT r.result_id, r.user_prompt, r.create_date, qn.questionnaire_id
 	
 await psql.manyOrNone(sql)
                 .then((data) => {
-                 
+                
 
                 console.log(data.length)
                 if(data.length >0){ 
