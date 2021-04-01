@@ -67,7 +67,7 @@ app.post('/api/create_diary',async (req,res,next)=>{
    res.send(ret)
 })
 
-app.post('/api/edit_diary',async (req,res,next)=>{
+app.put('/api/edit_diary',async (req,res,next)=>{
    const json = req.body
    const ret = await diary.edit_diary(json)
    console.log(ret)

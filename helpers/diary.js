@@ -44,8 +44,8 @@ diary.create_diary= async(json)=>{
 const ret ={}
 
 let sql = "INSERT INTO diary(diary_date, title, good, bad, wish, create_date, update_date, diary_pic, user_id, feel_id)"
-	sql += " VALUES( '" +json.diary_date;
-    sql += "','"+json.title;
+	sql += " VALUES( " +current_timestamp;
+    sql += " ,'"+json.title;
     sql += "','"+json.good;
     sql += "','"+json.bad;
     sql += "','"+json.wish;
@@ -71,7 +71,6 @@ let sql = "INSERT INTO diary(diary_date, title, good, bad, wish, create_date, up
 
 
 // picture --> url?
-// type date?
 // กรณีดึงจากตารางอื่น เขียนงายยยย
 
 // แก้ put
@@ -80,7 +79,7 @@ diary.edit_diary= async(json)=>{
 const ret ={}
 
 let sql = "INSERT INTO diary(diary_date, title, good, bad, wish, update_date, diary_pic, user_id, feel_id)"
-	sql += " VALUES( '" +json.diary_date;
+	sql += " VALUES( '" +date; //current_timestamp
     sql += "','"+json.title;
     sql += "','"+json.good;
     sql += "','"+json.bad;
