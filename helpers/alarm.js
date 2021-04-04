@@ -48,8 +48,6 @@ const ret ={}
  */
 
 
-// put = update 
-// update ใน sql ไม่ได้ใช้ insert
 let sql = "INSERT INTO alarm(  alarm_name, alarm_time, sound_id, user_id)"
     sql += " VALUES( '" +json.alarm_name;
     sql  +=  "','"+json.alarm_time;
@@ -121,4 +119,5 @@ let sql =  "DELETE FROM alarm where alarm_id = " + json.alarm_id;
         
         return ret;
 }
-export default alarm
+
+

@@ -70,26 +70,53 @@ let sql = "INSERT INTO diary(diary_date, title, good, bad, wish, create_date, up
 }
 
 
-// picture --> url?
-// กรณีดึงจากตารางอื่น เขียนงายยยย
-
-// แก้ put
-diary.edit_diary= async(json)=>{
+//post
+diary.create_diary= async(json)=>{
     console.log(json)
 const ret ={}
 
-let sql = "INSERT INTO diary(diary_date, title, good, bad, wish, update_date, diary_pic, user_id, feel_id)"
-	sql += " VALUES( '" +date; //current_timestamp
-    sql += "','"+json.title;
+let sql = "INSERT INTO diary(title, good, bad, wish, create_date, update_date, diary_pic, user_id, feel_id)"
+    sql += " ,'"+json.title;
     sql += "','"+json.good;
     sql += "','"+json.bad;
     sql += "','"+json.wish;
     sql += "', current_timestamp";
-    sql += " ,'"+json.pic;
+    sql += " , current_timestamp";
+    sql += " ,'"+json.diary_pic;
     sql += "','"+json.user_id;
     sql += "','"+json.feel_id+")";
     console.log(" sql : ",sql)
         const insert = await psql.none(sql)
+                .then(() => { 
+                    ret.status="Success" 
+                })
+                .catch(error => {
+                    // error;
+                    throw error
+                    ret.status="Error"
+                });
+
+        
+        return ret;
+}
+
+//put
+diary.edit_diary = async(json)=>{
+    console.log(json)
+const ret ={}
+
+let sql =  "UPDATE diary SET(  title = ''" +json.title; 
+    sql += ", good = ''" + json.good; 
+    sql += ", bad = ''" + json.bad; 
+    sql += ", wish = ''" + json.wish;
+    sql += " , update_date = current_timestamp";
+    sql += " , create_date = current_timestamp";
+    sql += " , diary_pic = ''" +json.diary_pic;
+    sql += " , user_id = ''" +json.user_id;
+    sql += " , feel_id = ''"+json.feel_id+")";
+    ;
+    console.log(" sql : ",sql)
+        const update = await psql.none(sql)
                 .then(() => { 
                     ret.status="Success" 
                 })
