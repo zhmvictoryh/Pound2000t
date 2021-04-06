@@ -14,6 +14,7 @@ import questionnaire_question  from './helpers/questionnaire_question';
 import heal_sentence  from './helpers/heal_sentence';
 import users  from './helpers/users';
 import alarm  from './helpers/alarm';
+import sound from './helpers/sound';
 
 const login = require('./routes/login')
 const register = require('./routes/register')
@@ -140,6 +141,14 @@ app.get('/api/list-card',async (req,res,next)=>{
 app.get('/api/list-heal_sentence',async (req,res,next)=>{
    const json = req.body
    const ret = await heal_sentence.list_all(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+// sound
+app.get('/api/list-sound',async (req,res,next)=>{
+   const json = req.body
+   const ret = await sound.list_all(json)
    console.log(ret)
    res.send(ret)
 })
