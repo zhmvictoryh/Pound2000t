@@ -35,7 +35,7 @@ app.get('/', (req,res,next) => {
 
 // login
 router.use('/login',login)
-router.use('/register',register)
+//router.use('/register',register)
 
 // get users
 app.get('/api/list-users',async (req,res,next)=>{

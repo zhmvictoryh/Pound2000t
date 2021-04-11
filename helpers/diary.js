@@ -9,10 +9,11 @@ SELECT diary_id, diary_date, title, good, bad, wish, create_date, update_date,
 diary_pic, user_id, feel_id FROM  diary
 */
 
-let sql  =  "SELECT D.diary_id, D.diary_date, D.title, D.good, D.bad, D.wish, D.create_date, D.update_date, D.diary_pic" 
+let sql  =  "SELECT D.diary_id, D.title, D.good, D.bad, D.wish, D.create_date, D.update_date, D.diary_pic" 
 sql += ", D.user_id, F.feel_name "
 sql += " FROM  diary D LEFT JOIN Feel F ON D.feel_id = F.feel_id" 
-sql += " LEFT JOIN users U ON D.user_id = U.user_id" 
+sql += " LEFT JOIN users U ON D.user_id = U.user_id WHERE 1=1 "
+sql += " AND d.diary_id = "+json_diary_id + " " 
     
 await psql.manyOrNone(sql)
                 .then((data) => {
@@ -23,7 +24,6 @@ await psql.manyOrNone(sql)
                 ret.status=200
                 ret.message="Success"
                 ret.data = data
-
 
                 }
 
@@ -43,40 +43,8 @@ diary.create_diary= async(json)=>{
     console.log(json)
 const ret ={}
 
-let sql = "INSERT INTO diary(diary_date, title, good, bad, wish, create_date, update_date, diary_pic, user_id, feel_id)"
-	sql += " VALUES( " +current_timestamp;
-    sql += " ,'"+json.title;
-    sql += "','"+json.good;
-    sql += "','"+json.bad;
-    sql += "','"+json.wish;
-    sql += "', current_timestamp";
-    sql += ",  current_timestamp ";
-    sql += " ,'"+json.pic;
-    sql += "','"+json.user_id;
-    sql += "','"+json.feel_id+")";
-    console.log(" sql : ",sql)
-        const insert = await psql.none(sql)
-                .then(() => { 
-                    ret.status="Success" 
-                })
-                .catch(error => {
-                    // error;
-                    throw error
-                    ret.status="Error"
-                });
-
-        
-        return ret;
-}
-
-
-//post
-diary.create_diary= async(json)=>{
-    console.log(json)
-const ret ={}
-
 let sql = "INSERT INTO diary(title, good, bad, wish, create_date, update_date, diary_pic, user_id, feel_id)"
-    sql += " ,'"+json.title;
+    sql += " VALUES ( '"+json.title;
     sql += "','"+json.good;
     sql += "','"+json.bad;
     sql += "','"+json.wish;
@@ -84,7 +52,7 @@ let sql = "INSERT INTO diary(title, good, bad, wish, create_date, update_date, d
     sql += " , current_timestamp";
     sql += " ,'"+json.diary_pic;
     sql += "','"+json.user_id;
-    sql += "','"+json.feel_id+")";
+    sql += "','"+json.feel_id+"')";
     console.log(" sql : ",sql)
         const insert = await psql.none(sql)
                 .then(() => { 

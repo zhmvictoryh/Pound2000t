@@ -35,7 +35,7 @@ await psql.manyOrNone(sql)
 }
 
 //post
-diary.result= async(json)=>{
+result.result= async(json)=>{
     console.log(json)
 const ret ={}
 
