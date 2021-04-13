@@ -140,7 +140,7 @@ app.get('/api/list-card',async (req,res,next)=>{
 // heal_sentence
 app.get('/api/list-heal_sentence',async (req,res,next)=>{
    const json = req.body
-   const ret = await heal_sentence.list_all(json)
+   const ret = await heal_sentence.get_one_sentence (json)
    console.log(ret)
    res.send(ret)
 })
@@ -164,6 +164,6 @@ app.get('/api/list-alarm',async (req,res,next)=>{
 */
 
 
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 

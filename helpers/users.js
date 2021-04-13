@@ -40,11 +40,11 @@ const ret ={}
 	VALUES ('neo', 'swap', 'neo1', 'engineer', 'neo2@neoswap.finance', '2000-02-02', current_timestamp, current_timestamp, 
 			1, 1);
  */
- const sqlCheck = "SELECT * from users WHERE  email = '"+String(json.email).trim() + "' "
+const sqlCheck = "SELECT * from users WHERE  email = '"+String(json.email).trim() + "' "
 const isDupEmail = await checkDupEmail(sqlCheck)
 if(!isDupEmail){
     let sql = "INSERT INTO users(  first_name, last_name, user_name, password, email"
-        sql += " ,birthday, create_date, update_date, hs_id) "
+        sql += " ,birthday, create_date, update_date) "
         sql += " VALUES( '" +json.first_name;
         sql  +=  "','"+json.last_name;
         sql  +=  "','"+json.user_name;
@@ -52,21 +52,24 @@ if(!isDupEmail){
         sql  +=  "','"+json.email;
         sql  +=  "','"+json.birthday;
         sql  +=  "', current_timestamp";
-        sql  +=  ",  current_timestamp ";  
-        sql  +=  ","+json.hs_id +")";
+        sql  +=  ",  current_timestamp )";  
+         
         console.log(" sql : ",sql)
             const insert = await psql.none(sql)
-                    .then(() => { 
-                        ret.status="Success" 
+                    .then(() => {  
+                        ret.status=200
+                        ret.message="Success"
                     })
                     .catch(error => {
                         // error;
                         throw error
-                        ret.status="Error"
+                        ret.status=400
+                        ret.message="Error"
                     });
 
 } else{
-    ret.status ="DuplicateEmailOrUserName"
+        ret.status=400
+        ret.message ="DuplicateEmailOrUserName"
 }
     
 

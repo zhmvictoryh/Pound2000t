@@ -12,8 +12,8 @@ diary_pic, user_id, feel_id FROM  diary
 let sql  =  "SELECT D.diary_id, D.title, D.good, D.bad, D.wish, D.create_date, D.update_date, D.diary_pic" 
 sql += ", D.user_id, F.feel_name "
 sql += " FROM  diary D LEFT JOIN Feel F ON D.feel_id = F.feel_id" 
-sql += " LEFT JOIN users U ON D.user_id = U.user_id WHERE 1=1 "
-sql += " AND d.diary_id = "+json_diary_id + " " 
+sql += " LEFT JOIN users U ON D.user_id = U.user_id WHERE 27=27 "
+//sql += " AND d.diary_id = "+json.diary_id + " " 
     
 await psql.manyOrNone(sql)
                 .then((data) => {
