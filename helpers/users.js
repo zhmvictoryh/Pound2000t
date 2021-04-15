@@ -36,13 +36,15 @@ users.register = async(json)=>{
     console.log(json)
 const ret ={}
 /*INSERT INTO users(  first_name, last_name, user_name, password, email
-				  ,birthday, create_date, update_date, pic_id, hs_id)
-	VALUES ('neo', 'swap', 'neo1', 'engineer', 'neo2@neoswap.finance', '2000-02-02', current_timestamp, current_timestamp, 
-			1, 1);
+      ,birthday, create_date, update_date, pic_id, hs_id)
+ VALUES ('neo', 'swap', 'neo1', 'engineer', 'neo2@neoswap.finance', '2000-02-02', current_timestamp, current_timestamp, 
+   1, 1);
  */
-const sqlCheck = "SELECT * from users WHERE  email = '"+String(json.email).trim() + "' "
-const isDupEmail = await checkDupEmail(sqlCheck)
-if(!isDupEmail){
+let sqlCheck1 = "SELECT * from users WHERE  email = '"+String(json.email).trim() + "' "
+let sqlCheck2 = "Select * from users where user_name = '"+String(json.user_name).trim()+"'"
+const isDupEmail = await checkDupEmail(sqlCheck1)
+const isDupUserName = await checkDupUserName(sqlCheck2)
+if(!isDupEmail & !isDupUserName){
     let sql = "INSERT INTO users(  first_name, last_name, user_name, password, email"
         sql += " ,birthday, create_date, update_date) "
         sql += " VALUES( '" +json.first_name;
@@ -92,6 +94,19 @@ const checkDupEmail =async(sql)=>{
     return ret
 }
 
+const checkDupUserName =async(sql)=>{
+    let ret = false
+    const rows = await psql.manyOrNone(sql)
+    .then((data)=>{
+        if(data.length>0){
+            ret = true
+        }
+    })
+    .catch(error=>{
+        throw error
+    })
+    return ret
+}
 
 
 
