@@ -12,7 +12,7 @@ diary_pic, user_id, feel_id FROM  diary
 let sql  =  "SELECT D.diary_id, D.title, D.good, D.bad, D.wish, D.create_date, D.update_date, D.diary_pic" 
 sql += ", D.user_id, F.feel_name "
 sql += " FROM  diary D LEFT JOIN Feel F ON D.feel_id = F.feel_id" 
-sql += " LEFT JOIN users U ON D.user_id = U.user_id WHERE 27=27 "
+sql += " LEFT JOIN users U ON D.user_id = U.user_id WHERE 1=1 "
 //sql += " AND d.diary_id = "+json.diary_id + " " 
     
 await psql.manyOrNone(sql)
@@ -97,6 +97,104 @@ let sql =  "UPDATE diary SET(  title = ''" +json.title;
         
         return ret;
 }
+
+
+//Home page
+
+//Get good only
+diary.list_allgood = async(json)=>{
+    const ret ={}
+    /*
+    SELECT d.good, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
+    */
+    
+    let sql  =  "SELECT d.good, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1" 
+        
+    await psql.manyOrNone(sql)
+                    .then((data) => {
+                     
+    
+                    console.log(data.length)
+                    if(data.length >0){ 
+                    ret.status=200
+                    ret.message="Success"
+                    ret.data = data
+    
+                    }
+    
+                    })
+                    .catch(error => {
+                    // error;
+                    ret.status =400
+                    ret.message="Error"
+                    throw error  
+                    });
+                    return ret
+    
+    }
+
+//Get bad only
+diary.list_allbad = async(json)=>{
+    const ret ={}
+    /*
+    SELECT d.bad, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
+    */
+    
+    let sql  =  "SELECT d.bad, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1" 
+        
+    await psql.manyOrNone(sql)
+                    .then((data) => {
+                     
+    
+                    console.log(data.length)
+                    if(data.length >0){ 
+                    ret.status=200
+                    ret.message="Success"
+                    ret.data = data
+    
+                    }
+    
+                    })
+                    .catch(error => {
+                    // error;
+                    ret.status =400
+                    ret.message="Error"
+                    throw error  
+                    });
+                    return ret
+    
+    }
+
+    diary.list_allwish = async(json)=>{
+        const ret ={}
+        /*
+        SELECT d.wish, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
+        */
+        
+        let sql  =  "SELECT d.wish, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1" 
+            
+        await psql.manyOrNone(sql)
+                        .then((data) => {
+                         
+        
+                        console.log(data.length)
+                        if(data.length >0){ 
+                        ret.status=200
+                        ret.message="Success"
+                        ret.data = data
+        
+                        }
+        
+                        })
+                        .catch(error => {
+                        // error;
+                        ret.status =400
+                        ret.message="Error"
+                        throw error  
+                        });
+                        return ret
+        
+        }
 
 export default diary
 

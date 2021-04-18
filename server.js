@@ -153,6 +153,34 @@ app.get('/api/list-sound',async (req,res,next)=>{
    res.send(ret)
 })
 
+//login
+app.post('/api/login',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.login(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-allgood',async (req,res,next)=>{
+   const json = req.body
+   const ret = await diary.list_allgood(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-allbad',async (req,res,next)=>{
+   const json = req.body
+   const ret = await diary.list_allbad(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-allwish',async (req,res,next)=>{
+   const json = req.body
+   const ret = await diary.list_allwish(json)
+   console.log(ret)
+   res.send(ret)
+})
 // alarm
 /*
 app.get('/api/list-alarm',async (req,res,next)=>{
