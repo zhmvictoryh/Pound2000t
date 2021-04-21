@@ -181,6 +181,41 @@ app.get('/api/list-allwish',async (req,res,next)=>{
    console.log(ret)
    res.send(ret)
 })
+
+app.get('/api/list-feel1',async (req,res,next)=>{
+   const json = req.body
+   const ret = await feel.list_feel1(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-feel2',async (req,res,next)=>{
+   const json = req.body
+   const ret = await feel.list_feel2(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-feel3',async (req,res,next)=>{
+   const json = req.body
+   const ret = await feel.list_feel3(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-feel4',async (req,res,next)=>{
+   const json = req.body
+   const ret = await feel.list_feel4(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-feel5',async (req,res,next)=>{
+   const json = req.body
+   const ret = await feel.list_feel5(json)
+   console.log(ret)
+   res.send(ret)
+})
 // alarm
 /*
 app.get('/api/list-alarm',async (req,res,next)=>{
