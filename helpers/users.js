@@ -1,4 +1,5 @@
 const psql = require('../psqlAdapter').psql;  
+import { request, response } from 'express';
 import moment from 'moment'  
 const users ={}
 
@@ -107,6 +108,50 @@ const checkDupUserName =async(sql)=>{
     })
     return ret
 }
+
+
+
+
+
+
+//login
+
+users.login = async(json)=>{
+    console.log(json)
+const ret ={}
+/*INSERT INTO users(  user_name, password)
+ VALUES ('neo1', 'engineer');
+ */
+let sql = "SELECT * from users  ";
+    sql += "  where user_name = '"+String(json.user_name).trim() + "'  AND password = '"+String(json.password).trim()+"'"
+ 
+    await psql.manyOrNone(sql)
+                .then((data) => {
+                 
+                console.log(data.length)
+                if(data.length ==1){ 
+                ret.status=200
+                ret.message="Success"
+                ret.data = data
+
+                } else {
+                    ret.status=400
+                ret.message="Fail"
+                ret.data = data
+
+                }
+     
+            })
+            .catch(error => {
+            // error;
+            ret.status =400
+            ret.message="Username or password is incorrect"
+            throw error  
+            });
+            
+            return ret;
+        
+    }
 
 
 
