@@ -122,7 +122,7 @@ const ret ={}
 /*INSERT INTO users(  user_name, password)
  VALUES ('neo1', 'engineer');
  */
-let sql = "SELECT * from users  ";
+let sql = "SELECT  from users  ";
     sql += "  where user_name = '"+String(json.user_name).trim() + "'  AND password = '"+String(json.password).trim()+"'"
  
     await psql.manyOrNone(sql)
@@ -133,7 +133,7 @@ let sql = "SELECT * from users  ";
                 ret.status=200
                 ret.message="Success"
                 ret.data = data
-
+                
                 } else {
                     ret.status=400
                 ret.message="Fail"
@@ -142,16 +142,12 @@ let sql = "SELECT * from users  ";
                 }
      
             })
-            .catch(error => {
-            // error;
-            ret.status =400
-            ret.message="Username or password is incorrect"
-            throw error  
-            });
+            
             
             return ret;
         
-    }
+    
+}
 
 
 
