@@ -35,6 +35,7 @@
   "keywords": [],
   "description": "",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
     "nodemon": "^2.0.13",
     "sequelize-cli": "^6.2.0"
   }

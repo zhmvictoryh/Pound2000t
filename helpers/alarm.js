@@ -40,7 +40,7 @@ await psql.manyOrNone(sql)
 }
 
 //post
-alarm.add = async(json)=>{
+alarm.create_alarm = async(json)=>{
     console.log(json)
 const ret ={}
 /*INSERT INTO alarm(  alarm_name, alarm_time, sound_id, user_id)
@@ -69,7 +69,7 @@ let sql = "INSERT INTO alarm(  alarm_name, alarm_time, sound_id, user_id)"
 }
 
 //put
-alarm.edit = async(json)=>{
+alarm.edit_alarm = async(json)=>{
     console.log(json)
 const ret ={}
 /*UPDATE alarm
@@ -97,7 +97,7 @@ let sql =  "UPDATE alarm SET(  alarm_name = ''" +json.alarm_name;
 }
 
 //delete
-alarm.delete = async(json)=>{
+alarm.delete_alarm = async(json)=>{
     console.log(json)
 const ret ={}
 /*
@@ -119,5 +119,4 @@ let sql =  "DELETE FROM alarm where alarm_id = " + json.alarm_id;
         
         return ret;
 }
-
-
+export default alarm

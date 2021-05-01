@@ -216,6 +216,13 @@ app.get('/api/list-feel5',async (req,res,next)=>{
    console.log(ret)
    res.send(ret)
 })
+
+app.get('/api/login',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.login(json)
+   console.log(ret)
+   res.send(ret)
+})
 // alarm
 /*
 app.get('/api/list-alarm',async (req,res,next)=>{
