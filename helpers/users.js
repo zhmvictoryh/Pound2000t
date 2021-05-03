@@ -122,7 +122,7 @@ const ret ={}
 /*INSERT INTO users(  user_name, password)
  VALUES ('neo1', 'engineer');
  */
-let sql = "SELECT  from users  ";
+let sql = "SELECT  user_id, first_name, last_name, user_name, email, birthday from users  ";
     sql += "  where user_name = '"+String(json.user_name).trim() + "'  AND password = '"+String(json.password).trim()+"'"
  
     await psql.manyOrNone(sql)
