@@ -140,7 +140,7 @@ app.get('/api/list-card',async (req,res,next)=>{
 // heal_sentence
 app.get('/api/list-heal_sentence',async (req,res,next)=>{
    const json = req.body
-   const ret = await heal_sentence.get_one_sentence (json)
+   const ret = await heal_sentence.get_sentence (json)
    console.log(ret)
    res.send(ret)
 })
@@ -217,9 +217,16 @@ app.get('/api/list-feel5',async (req,res,next)=>{
    res.send(ret)
 })
 
-app.get('/api/login',async (req,res,next)=>{
+app.post('/api/login',async (req,res,next)=>{
    const json = req.body
    const ret = await users.login(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-user_name',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.get_user_name(json)
    console.log(ret)
    res.send(ret)
 })

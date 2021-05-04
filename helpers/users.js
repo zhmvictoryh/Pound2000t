@@ -156,5 +156,42 @@ let sql = "SELECT  user_id, first_name, last_name, user_name, email, birthday fr
 
 
 
+users.get_user_name = async(json)=>{
+    console.log(json)
+const ret ={}
+
+let sql = "Select user_name from users where user_id = " +json.user_id;
+
+ 
+    await psql.manyOrNone(sql)
+                .then((data) => {
+                 
+                console.log(data.length)
+                if(data.length ==1){ 
+                ret.status=200
+                ret.message="Success"
+                ret.data = data
+                
+                } else {
+                    ret.status=400
+                ret.message="Error"
+                ret.data = data
+
+                }
+     
+            })
+            
+            
+            return ret;
+        
+    
+}
+
+
+
+
+
+
+
 
 export default users
