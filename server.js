@@ -25,7 +25,6 @@ const router = express.Router()
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.json())
-app.use('/api/v1',router)
 
 
 // homepage route
@@ -33,14 +32,18 @@ app.get('/', (req,res,next) => {
     res.send('Hello, Express!');
 })
 
-// login
-router.use('/login',login)
-//router.use('/register',register)
-
-// get users
+// get all users
 app.get('/api/list-users',async (req,res,next)=>{
    const json = req.body
    const ret = await users.list_all(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+// login
+app.post('/api/login',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.login(json)
    console.log(ret)
    res.send(ret)
 })
@@ -153,14 +156,7 @@ app.get('/api/list-sound',async (req,res,next)=>{
    res.send(ret)
 })
 
-//login
-app.post('/api/login',async (req,res,next)=>{
-   const json = req.body
-   const ret = await users.login(json)
-   console.log(ret)
-   res.send(ret)
-})
-
+// list-allGood
 app.get('/api/list-allgood',async (req,res,next)=>{
    const json = req.body
    const ret = await diary.list_allgood(json)
@@ -168,6 +164,7 @@ app.get('/api/list-allgood',async (req,res,next)=>{
    res.send(ret)
 })
 
+// list-allBad
 app.get('/api/list-allbad',async (req,res,next)=>{
    const json = req.body
    const ret = await diary.list_allbad(json)
@@ -175,12 +172,15 @@ app.get('/api/list-allbad',async (req,res,next)=>{
    res.send(ret)
 })
 
+// list-allWish
 app.get('/api/list-allwish',async (req,res,next)=>{
    const json = req.body
    const ret = await diary.list_allwish(json)
    console.log(ret)
    res.send(ret)
 })
+
+// --- Feel function ---
 
 app.get('/api/list-feel1',async (req,res,next)=>{
    const json = req.body
@@ -217,28 +217,13 @@ app.get('/api/list-feel5',async (req,res,next)=>{
    res.send(ret)
 })
 
-app.post('/api/login',async (req,res,next)=>{
-   const json = req.body
-   const ret = await users.login(json)
-   console.log(ret)
-   res.send(ret)
-})
-
 app.get('/api/list-user_name',async (req,res,next)=>{
    const json = req.body
    const ret = await users.get_user_name(json)
    console.log(ret)
    res.send(ret)
 })
-// alarm
-/*
-app.get('/api/list-alarm',async (req,res,next)=>{
-   const json = req.body
-   const ret = await alarm.list_all(json)
-   console.log(ret)
-   res.send(ret)
-})
-*/
+
 
 
 const PORT = process.env.PORT || 3000;

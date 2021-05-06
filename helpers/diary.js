@@ -146,7 +146,7 @@ diary.list_allbad = async(json)=>{
     
     let sql   =  "select  d.update_date, d.bad"
     sql  +=  " from diary d " 
-    sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
+    sql  +=  "left join users u on d.user_id = u.user_id where u.user_id = '27' " 
     sql  +=  " group by d.bad,d.update_date"
     sql  +=  " order by d.update_date desc;" 
         
