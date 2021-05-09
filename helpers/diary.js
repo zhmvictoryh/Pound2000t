@@ -113,7 +113,7 @@ diary.list_allgood = async(json)=>{
         sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
         sql  +=  " group by d.good,d.update_date"
         sql  +=  " order by d.update_date desc;" 
-        
+    console.log(sql)   
     await psql.manyOrNone(sql)
                     .then((data) => {
                      
@@ -143,7 +143,7 @@ diary.list_allbad = async(json)=>{
     /*
     SELECT d.bad, d.update_date FROM diary d LEFT JOIN users u ON d.user_id = u.user_id where 1=1
     */
-    
+    // แก้ syntax ไม่เอา hard code
     let sql   =  "select  d.update_date, d.bad"
     sql  +=  " from diary d " 
     sql  +=  "left join users u on d.user_id = u.user_id where u.user_id = '27' " 
