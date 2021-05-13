@@ -34,13 +34,27 @@ app.get('/', (req,res,next) => {
 })
 
 // login
-router.use('/login',login)
+app.post('/api/login',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.login(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+//router.use('/login',login)
 //router.use('/register',register)
 
 // get users
 app.get('/api/list-users',async (req,res,next)=>{
    const json = req.body
    const ret = await users.list_all(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/list-user_name',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.get_user_name(json)
    console.log(ret)
    res.send(ret)
 })
@@ -82,7 +96,7 @@ app.get('/api/list-feel',async (req,res,next)=>{
    res.send(ret)
 })
 
-// check-up
+// check-up function
 app.get('/api/list-question',async (req,res,next)=>{
    const json = req.body
    const ret = await question.list_all(json)
@@ -153,10 +167,10 @@ app.get('/api/list-sound',async (req,res,next)=>{
    res.send(ret)
 })
 
-//login
-app.post('/api/login',async (req,res,next)=>{
+//feel function
+app.get('/api/list-allfeel',async (req,res,next)=>{
    const json = req.body
-   const ret = await users.login(json)
+   const ret = await feel.list_allfeel(json)
    console.log(ret)
    res.send(ret)
 })
@@ -182,7 +196,7 @@ app.get('/api/list-allwish',async (req,res,next)=>{
    res.send(ret)
 })
 
-app.get('/api/list-feel1',async (req,res,next)=>{
+/*app.get('/api/list-feel1',async (req,res,next)=>{
    const json = req.body
    const ret = await feel.list_feel1(json)
    console.log(ret)
@@ -215,21 +229,10 @@ app.get('/api/list-feel5',async (req,res,next)=>{
    const ret = await feel.list_feel5(json)
    console.log(ret)
    res.send(ret)
-})
+})*/
 
-app.post('/api/login',async (req,res,next)=>{
-   const json = req.body
-   const ret = await users.login(json)
-   console.log(ret)
-   res.send(ret)
-})
 
-app.get('/api/list-user_name',async (req,res,next)=>{
-   const json = req.body
-   const ret = await users.get_user_name(json)
-   console.log(ret)
-   res.send(ret)
-})
+
 // alarm
 /*
 app.get('/api/list-alarm',async (req,res,next)=>{

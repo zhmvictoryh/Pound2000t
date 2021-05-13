@@ -2,9 +2,10 @@ const psql = require('../psqlAdapter').psql;
 
 const feel ={}
 
-feel.list_all = async(json)=>{
+feel.list_allfeel = async(json)=>{
 const ret ={}
-let sql = "SELECT feel_id, feel_name FROM feel"
+let sql = " select feel_id, feel_name from feel" 
+          " order by feel_id; "
 await psql.manyOrNone(sql)
                 .then((data) => {
                  
