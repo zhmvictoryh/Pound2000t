@@ -32,7 +32,7 @@ app.get('/', (req,res,next) => {
     res.send('Hello, Express!');
 })
 
-<<<<<<< HEAD
+
 // login
 app.post('/api/login',async (req,res,next)=>{
    const json = req.body
@@ -45,9 +45,9 @@ app.post('/api/login',async (req,res,next)=>{
 //router.use('/register',register)
 
 // get users
-=======
+
 // get all users
->>>>>>> main
+
 app.get('/api/list-users',async (req,res,next)=>{
    const json = req.body
    const ret = await users.list_all(json)
@@ -55,16 +55,16 @@ app.get('/api/list-users',async (req,res,next)=>{
    res.send(ret)
 })
 
-<<<<<<< HEAD
+
 app.get('/api/list-user_name',async (req,res,next)=>{
    const json = req.body
    const ret = await users.get_user_name(json)
-=======
+
 // login
 app.post('/api/login',async (req,res,next)=>{
    const json = req.body
    const ret = await users.login(json)
->>>>>>> main
+
    console.log(ret)
    res.send(ret)
 })
@@ -177,7 +177,7 @@ app.get('/api/list-sound',async (req,res,next)=>{
    res.send(ret)
 })
 
-<<<<<<< HEAD
+
 //feel function
 app.get('/api/list-allfeel',async (req,res,next)=>{
    const json = req.body
@@ -186,9 +186,9 @@ app.get('/api/list-allfeel',async (req,res,next)=>{
    res.send(ret)
 })
 
-=======
+
 // list-allGood
->>>>>>> main
+
 app.get('/api/list-allgood',async (req,res,next)=>{
    const json = req.body
    const ret = await diary.list_allgood(json)
@@ -212,7 +212,7 @@ app.get('/api/list-allwish',async (req,res,next)=>{
    res.send(ret)
 })
 
-<<<<<<< HEAD
+
 /*app.get('/api/list-feel1',async (req,res,next)=>{
 =======
 // --- Feel function ---
@@ -254,7 +254,7 @@ app.get('/api/list-feel5',async (req,res,next)=>{
 })*/
 
 
-<<<<<<< HEAD
+
 
 // alarm
 /*
@@ -265,7 +265,7 @@ app.get('/api/list-alarm',async (req,res,next)=>{
    res.send(ret)
 })
 */
-=======
+
 app.get('/api/list-user_name',async (req,res,next)=>{
    const json = req.body
    const ret = await users.get_user_name(json)
@@ -273,9 +273,8 @@ app.get('/api/list-user_name',async (req,res,next)=>{
    res.send(ret)
 })
 
->>>>>>> main
+
 
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
-
