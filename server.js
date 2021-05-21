@@ -40,6 +40,13 @@ app.get('/api/list-users',async (req,res,next)=>{
    res.send(ret)
 })
 
+app.get('/api/list-user_name',async (req,res,next)=>{
+   const json = req.body
+   const ret = await users.get_user_name(json)
+   console.log(ret)
+   res.send(ret)
+})
+
 // login
 app.post('/api/login',async (req,res,next)=>{
    const json = req.body
@@ -156,6 +163,8 @@ app.get('/api/list-sound',async (req,res,next)=>{
    res.send(ret)
 })
 
+// ---------------- Home -----------------
+
 // list-allGood
 app.get('/api/list-allgood',async (req,res,next)=>{
    const json = req.body
@@ -181,51 +190,17 @@ app.get('/api/list-allwish',async (req,res,next)=>{
 })
 
 // --- Feel function ---
-
-app.get('/api/list-feel1',async (req,res,next)=>{
+app.get('/api/list-allfeel',async (req,res,next)=>{
    const json = req.body
-   const ret = await feel.list_feel1(json)
+   const ret = await feel.list_allfeel(json)
    console.log(ret)
    res.send(ret)
 })
 
-app.get('/api/list-feel2',async (req,res,next)=>{
-   const json = req.body
-   const ret = await feel.list_feel2(json)
-   console.log(ret)
-   res.send(ret)
-})
 
-app.get('/api/list-feel3',async (req,res,next)=>{
-   const json = req.body
-   const ret = await feel.list_feel3(json)
-   console.log(ret)
-   res.send(ret)
-})
 
-app.get('/api/list-feel4',async (req,res,next)=>{
-   const json = req.body
-   const ret = await feel.list_feel4(json)
-   console.log(ret)
-   res.send(ret)
-})
-
-app.get('/api/list-feel5',async (req,res,next)=>{
-   const json = req.body
-   const ret = await feel.list_feel5(json)
-   console.log(ret)
-   res.send(ret)
-})
-
-app.get('/api/list-user_name',async (req,res,next)=>{
-   const json = req.body
-   const ret = await users.get_user_name(json)
-   console.log(ret)
-   res.send(ret)
-})
 
 
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
-
