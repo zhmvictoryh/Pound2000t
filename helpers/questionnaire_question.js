@@ -9,7 +9,7 @@ const ret ={}
 	sql += " LEFT JOIN question q ON q_qn.question_id = q.question_id"*/
 
  let sql = "SELECT qq_id, questionnaire_id, question_id, create_date"
-	sql += " FROM questionnaire_question"
+	sql += " FROM questionnaire_question;"
 	
 await psql.manyOrNone(sql)
                 .then((data) => {
