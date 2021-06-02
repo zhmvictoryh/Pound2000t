@@ -9,7 +9,7 @@ SELECT diary_id, diary_date, title, good, bad, wish, create_date, update_date,
 diary_pic, user_id, feel_id FROM  diary
 */
 
-let sql  =  "SELECT D.diary_id, D.title, D.good, D.bad, D.wish, D.create_date, D.update_date, D.diary_pic" 
+let sql  =  "SELECT D.diary_id, D.title, D.good, D.bad, D.wish, D.create_date, D.update_date " 
 sql += ", D.user_id, F.feel_name "
 sql += " FROM  diary D LEFT JOIN Feel F ON D.feel_id = F.feel_id" 
 sql += " LEFT JOIN users U ON D.user_id = U.user_id WHERE u.user_id = " +json.user_id;
@@ -73,17 +73,18 @@ diary.edit_diary = async(json)=>{
     console.log(json)
 const ret ={}
 
-let sql =  "UPDATE diary SET(  title = ''" +json.title; 
-    sql += ", good = ''" + json.good; 
-    sql += ", bad = ''" + json.bad; 
-    sql += ", wish = ''" + json.wish;
-    sql += " , update_date = current_timestamp";
-    sql += " , create_date = current_timestamp";
-    sql += " , diary_pic = ''" +json.diary_pic;
-    sql += " , user_id = ''" +json.user_id;
-    sql += " , feel_id = ''"+json.feel_id+")";
-    ;
+
+    let sql  = "UPDATE diary SET title='"+json.title+"'";
+        sql += ", good='" +json.good+"'";
+        sql += ", bad='"+json.bad+ "'";
+        sql += ", wish='"+json.wish+ "'";
+        sql += ", create_date = current_timestamp";
+        sql += ", update_date = current_timestamp";
+	    sql += ", user_id = '" +json.user_id+"'" ;
+	    sql += " WHERE diary_id ='" +json.diary_id+"'";
+
     console.log(" sql : ",sql)
+
         const update = await psql.none(sql)
                 .then(() => { 
                     ret.status="Success" 
