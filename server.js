@@ -96,8 +96,13 @@ app.get('/api/list-feel',async (req,res,next)=>{
 
 // check-up
 app.get('/api/list-question',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+  /* const json = JSON.parse(req.query[0])
    console.log("json : ",json)
+   const ret = await question.list_all(json)
+   console.log(ret)
+   res.send(ret)*/
+
+   const json = req.body
    const ret = await question.list_all(json)
    console.log(ret)
    res.send(ret)
@@ -152,6 +157,13 @@ app.get('/api/list-card',async (req,res,next)=>{
    const json = JSON.parse(req.query[0])
    console.log("json : ",json)
    const ret = await card.list_all(json)
+   console.log(ret)
+   res.send(ret)
+})
+
+app.get('/api/card-result',async (req,res,next)=>{
+   const json = req.body
+   const ret = await card.card_result(json)
    console.log(ret)
    res.send(ret)
 })
