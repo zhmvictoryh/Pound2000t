@@ -20,7 +20,7 @@ await psql.manyOrNone(sql)
                  
 
                 console.log(data.length)
-                if(data.length >0){ 
+                if(data.length > 0){ 
                 ret.status=200
                 ret.message="Success"
                 ret.data = data
@@ -43,15 +43,13 @@ diary.create_diary= async(json)=>{
     console.log(json)
 const ret ={}
 
-let sql = "INSERT INTO diary(title, good, bad, wish, create_date, update_date, diary_pic, user_id, feel_id)"
+let sql = "INSERT INTO diary(title, good, bad, wish, create_date, user_id, feel_id)"
     sql += " VALUES ( '"+json.title;
     sql += "','"+json.good;
     sql += "','"+json.bad;
     sql += "','"+json.wish;
     sql += "', current_timestamp";
-    sql += " , current_timestamp";
-    sql += " ,'"+json.diary_pic;
-    sql += "','"+json.user_id;
+    sql += ",'"+json.user_id;
     sql += "','"+json.feel_id+"')";
     console.log(" sql : ",sql)
         const insert = await psql.none(sql)
@@ -78,8 +76,6 @@ const ret ={}
         sql += ", good='" +json.good+"'";
         sql += ", bad='"+json.bad+ "'";
         sql += ", wish='"+json.wish+ "'";
-        sql += ", create_date = current_timestamp";
-        sql += ", update_date = current_timestamp";
 	    sql += ", user_id = '" +json.user_id+"'" ;
 	    sql += " WHERE diary_id ='" +json.diary_id+"'";
 
@@ -147,10 +143,10 @@ diary.list_allbad = async(json)=>{
     */
     // แก้ syntax ไม่เอา hard code
     let sql   =  "select  d.update_date, d.bad"
-    sql  +=  " from diary d " 
-    sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
-    sql  +=  " group by d.bad,d.update_date"
-    sql  +=  " order by d.update_date desc;" 
+        sql  +=  " from diary d " 
+        sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
+        sql  +=  " group by d.bad,d.update_date"
+        sql  +=  " order by d.update_date desc;" 
         
     await psql.manyOrNone(sql)
                     .then((data) => {
@@ -182,10 +178,10 @@ diary.list_allbad = async(json)=>{
         */
         
         let sql   =  "select  d.update_date, d.wish"
-        sql  +=  " from diary d " 
-        sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
-        sql  +=  " group by d.wish,d.update_date"
-        sql  +=  " order by d.update_date desc;" 
+            sql  +=  " from diary d " 
+            sql  +=  "left join users u on d.user_id = u.user_id where u.user_id =" +json.user_id; 
+            sql  +=  " group by d.wish,d.update_date"
+            sql  +=  " order by d.update_date desc;" 
             
         await psql.manyOrNone(sql)
                         .then((data) => {
