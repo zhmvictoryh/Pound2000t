@@ -132,7 +132,7 @@ let sql = "SELECT  user_id, first_name, last_name, user_name, email from users  
                 if(data.length ==1){ 
                 ret.status=200
                 ret.message="Success"
-                ret.data = data
+                ret.data = data[0]
                 
                 } else {
                     ret.status=400

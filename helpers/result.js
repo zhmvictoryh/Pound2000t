@@ -62,5 +62,4 @@ let sql = "INSERT INTO result(user_prompt, create_date, final_score, questionnai
         return ret;
 }
 
-
 export default result

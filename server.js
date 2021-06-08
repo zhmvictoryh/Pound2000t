@@ -34,14 +34,16 @@ app.get('/', (req,res,next) => {
 
 // get all users
 app.get('/api/list-users',async (req,res,next)=>{
-   const json = req.body
+   const json = req.query
+   console.log("json : ",json)
    const ret = await users.list_all(json)
    console.log(ret)
    res.send(ret)
 })
 
 app.get('/api/list-user_name',async (req,res,next)=>{
-   const json = req.body
+   const json = req.query
+   console.log("json : ",json)
    const ret = await users.get_user_name(json)
    console.log(ret)
    res.send(ret)
@@ -65,7 +67,7 @@ app.post('/api/register',async (req,res,next)=>{
 
 // diary 
 app.get('/api/list-diary',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await diary.list_all(json)
    console.log(ret)
@@ -87,7 +89,7 @@ app.put('/api/edit_diary',async (req,res,next)=>{
 })
 
 app.get('/api/list-feel',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await feel.list_all(json)
    console.log(ret)
@@ -108,28 +110,28 @@ app.get('/api/list-question',async (req,res,next)=>{
    res.send(ret)
 })
 app.get('/api/list-choices',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await choices.list_all(json)
    console.log(ret)
    res.send(ret)
 })
 app.get('/api/list-questionnaires',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await questionnaires.list_all(json)
    console.log(ret)
    res.send(ret)
 })
 app.get('/api/list-questionnaire_question',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await questionnaire_question.list_all(json)
    console.log(ret)
    res.send(ret)
 })
 app.get('/api/list-question_type',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await question_type.list_all(json)
    console.log(ret)
@@ -138,7 +140,7 @@ app.get('/api/list-question_type',async (req,res,next)=>{
 
 // result
 app.get('/api/list-result',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await result.list_all(json)
    console.log(ret)
@@ -154,7 +156,7 @@ app.post('/api/result',async (req,res,next)=>{
 
 // card
 app.get('/api/list-card',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await card.list_all(json)
    console.log(ret)
@@ -170,7 +172,7 @@ app.get('/api/card-result',async (req,res,next)=>{
 
 // heal_sentence
 app.get('/api/list-heal_sentence',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await heal_sentence.get_one_sentence (json)
    console.log(ret)
@@ -179,7 +181,7 @@ app.get('/api/list-heal_sentence',async (req,res,next)=>{
 
 // sound
 app.get('/api/list-sound',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await sound.list_all(json)
    console.log(ret)
@@ -190,7 +192,8 @@ app.get('/api/list-sound',async (req,res,next)=>{
 
 // list-allGood
 app.get('/api/list-allgood',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   console.log("req.query : ",req.query) 
+   const json = req.query
    console.log("json : ",json)
    const ret = await diary.list_allgood(json)
    console.log(ret)
@@ -199,7 +202,7 @@ app.get('/api/list-allgood',async (req,res,next)=>{
 
 // list-allBad
 app.get('/api/list-allbad',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await diary.list_allbad(json)
    console.log(ret)
@@ -208,7 +211,7 @@ app.get('/api/list-allbad',async (req,res,next)=>{
 
 // list-allWish
 app.get('/api/list-allwish',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await diary.list_allwish(json)
    console.log(ret)
@@ -217,7 +220,7 @@ app.get('/api/list-allwish',async (req,res,next)=>{
 
 // --- Feel function ---
 app.get('/api/list-allfeel',async (req,res,next)=>{
-   const json = JSON.parse(req.query[0])
+   const json = req.query
    console.log("json : ",json)
    const ret = await feel.list_allfeel(json)
    console.log(ret)

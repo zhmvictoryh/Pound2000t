@@ -13,7 +13,7 @@ let sql  =  "SELECT D.diary_id, D.title, D.good, D.bad, D.wish, D.create_date, D
 sql += ", D.user_id, F.feel_name "
 sql += " FROM  diary D LEFT JOIN Feel F ON D.feel_id = F.feel_id" 
 sql += " LEFT JOIN users U ON D.user_id = U.user_id WHERE u.user_id = " +json.user_id;
-sql += " AND d.diary_id = "+json.diary_id + " " 
+//sql += " AND d.diary_id = "+json.diary_id + " " 
     
 await psql.manyOrNone(sql)
                 .then((data) => {
