@@ -225,6 +225,55 @@ app.get('/api/list-allfeel',async (req,res,next)=>{
    const ret = await feel.list_allfeel(json)
    console.log(ret)
    res.send(ret)
+})
+
+//very_good_mood
+app.get('/api/very_good',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await feel.very_good(json)
+   console.log(ret)
+   res.send(ret)
+
+})
+
+//good_mood
+app.get('/api/good',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await feel.good(json)
+   console.log(ret)
+   res.send(ret)
+
+})
+
+//soso_mood
+app.get('/api/soso',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await feel.soso(json)
+   console.log(ret)
+   res.send(ret)
+
+})
+
+//bad_mood
+app.get('/api/bad',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await feel.bad(json)
+   console.log(ret)
+   res.send(ret)
+
+})
+
+//moody_mood
+app.get('/api/moody',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await feel.moody(json)
+   console.log(ret)
+   res.send(ret)
 
 })
 
