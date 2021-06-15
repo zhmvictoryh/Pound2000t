@@ -8,6 +8,12 @@ const ret ={}
 
 /* SELECT hs_id, heal_sentence FROM heal_sentence; */
     
+let today = new Date();
+let date1 = new Date(today.getFullYear(),(today.getMonth()+1),today.getDate());
+let date2 = new Date(2021,11,4);
+let num = ((date1-date2)/86400000);
+console.log(num);
+
 let sql = "select heal_sentence from heal_sentence order by random() limit 1;"
 
 console.log(sql)   
@@ -33,5 +39,7 @@ await psql.manyOrNone(sql)
                 return ret
 
 }
+
+
 
 export default heal_sentence
