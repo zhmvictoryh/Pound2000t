@@ -74,6 +74,14 @@ app.get('/api/list-diary',async (req,res,next)=>{
    res.send(ret)
 })
 
+app.get('/api/select-diary',async (req,res,next)=>{
+   const json = req.query
+   console.log("json : ",json)
+   const ret = await diary.select_diary(json)
+   console.log(ret)
+   res.send(ret)
+})
+
 app.post('/api/create_diary',async (req,res,next)=>{
    const json = req.body
    const ret = await diary.create_diary(json)

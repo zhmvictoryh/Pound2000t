@@ -206,6 +206,49 @@ diary.list_allbad = async(json)=>{
         
         }
 
+
+//select diary
+diary.select_diary = async(json)=>{
+    const ret ={}
+    /*
+    select d.create_date, d.title, d.good, d.bad, d.wish
+    from diary d
+    left join users u
+    on d.user_id = u.user_id 
+    where u.user_id = '1' and d.create_date = '2021-11-16';
+    */
+    
+    let sql  =  " select d.create_date, d.title, d.good, d.bad, d.wish "
+        sql +=  " from diary d "
+        sql +=  " left join users u "
+        sql +=  " on d.user_id = u.user_id" 
+        sql +=  " where u.user_id = '"+json.user_id+"'"; 
+        sql +=  " and date(d.create_date) = '" +json.create_date+"'";
+
+
+    await psql.manyOrNone(sql)
+                    .then((data) => {
+                     
+    
+                    console.log(data.length)
+                    if(data.length >0){ 
+                    ret.status=200
+                    ret.message="Success"
+                    ret.data = data
+    
+                    }
+    
+                    })
+                    .catch(error => {
+                    // error;
+                    ret.status =400
+                    ret.message="Error"
+                    throw error  
+                    });
+                    return ret
+    
+    }
+
 export default diary
 
 
