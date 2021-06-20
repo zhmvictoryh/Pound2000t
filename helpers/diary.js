@@ -54,12 +54,13 @@ let sql = "INSERT INTO diary(title, good, bad, wish, create_date, user_id, feel_
     console.log(" sql : ",sql)
         const insert = await psql.none(sql)
                 .then(() => { 
-                    ret.status="Success" 
+                        ret.status=200
+                        ret.message="Success"
                 })
                 .catch(error => {
                     // error;
-                    throw error
-                    ret.status="Error"
+                        ret.status=400
+                        ret.message="Error"
                 });
 
         
