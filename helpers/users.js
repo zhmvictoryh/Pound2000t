@@ -47,13 +47,12 @@ const isDupEmail = await checkDupEmail(sqlCheck1)
 const isDupUserName = await checkDupUserName(sqlCheck2)
 if(!isDupEmail & !isDupUserName){
     let sql = "INSERT INTO users(  first_name, last_name, user_name, password, email"
-        sql += " ,birthday, create_date, update_date) "
+        sql += " , create_date, update_date) "
         sql += " VALUES( '" +json.first_name;
         sql  +=  "','"+json.last_name;
         sql  +=  "','"+json.user_name;
         sql  +=  "','"+json.password;
         sql  +=  "','"+json.email;
-        sql  +=  "','"+json.birthday;
         sql  +=  "', current_timestamp";
         sql  +=  ",  current_timestamp )";  
          
