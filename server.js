@@ -13,7 +13,6 @@ import questionnaires  from './helpers/questionnaires';
 import questionnaire_question  from './helpers/questionnaire_question';
 import heal_sentence  from './helpers/heal_sentence';
 import users  from './helpers/users';
-import alarm  from './helpers/alarm';
 import sound from './helpers/sound';
 
 const login = require('./routes/login')
