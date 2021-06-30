@@ -1,5 +1,19 @@
 version : '3'
 services:
+    ibearyouapi:
+      container_name: ibearyouapi
+      build: .
+      volumes:
+        - .:/usr/app
+        - /usr/app/node_modules
+      command: yarn start
+      restart: always
+      ports:
+        - 3000:3000
+      depends_on:
+        - ibearyoudb
+      environment:
+        DATABASE_URL: postgresql://ibearyou:ibearyou@ibearyoudb:5432/ibearyou_db
     ibearyoudb :
       image: postgres:14.0-alpine
       environment :

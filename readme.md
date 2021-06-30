@@ -10,5 +10,10 @@ $ yarn  start
 # Download source/ Git Clone the repo
 https://github.com/Pound2000/IBearYou_BE.git
 
+# docker-compose command
+
+# docker-compose ps
+# docker-compose stop <container name>
+
 
 
