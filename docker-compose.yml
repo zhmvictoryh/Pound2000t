@@ -15,6 +15,7 @@ services:
       environment:
         DATABASE_URL: postgresql://ibearyou:ibearyou@ibearyoudb:5432/ibearyou_db
     ibearyoudb :
+      container_name: ibearyoudb
       image: postgres:14.0-alpine
       environment :
         - POSTGRES_DB=ibearyou_db
